@@ -296,3 +296,92 @@ section {
     border-radius: 2px;
   }
 }
+
+/* Responsive Design & Mobile Menu */
+@media (max-width: 768px) {
+  .name {
+    font-size: 2.8rem;
+    letter-spacing: -2px;
+  }
+
+  /* 1. Styling Menu Navigasi (Sembunyi di kanan layar) */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Sembunyikan di luar layar */
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(15px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.4s ease-in-out;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.05);
+    z-index: 999;
+  }
+
+  /* Class tambahan yang akan dipicu oleh JS untuk memunculkan menu */
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links li {
+    margin: 20px 0;
+  }
+
+  .nav-links a {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  /* 2. Styling Ikon Hamburger */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 1001; /* Pastikan selalu di atas menu */
+  }
+
+  .hamburger span {
+    width: 30px;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      var(--accent-teal),
+      var(--accent-purple)
+    );
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+    transform-origin: 1px; /* Titik tumpu untuk animasi rotasi */
+  }
+
+  /* 3. Animasi Hamburger menjadi "X" saat class active ditambahkan */
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0; /* Garis tengah menghilang */
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+}
+
+.fun {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.fun button {
+  margin: 10px;
+  padding: 12px 20px;
+  border-radius: 20px;
+  border: none;
+  background: pink;
+  cursor: pointer;
+}
